@@ -1,0 +1,199 @@
+
+.Page-body{
+    width: 100%;
+    display: flex;
+    height: 100vh;
+    background-color: rgba(239, 236, 236, 0.779);
+}
+.leftside{
+    width: 17%;
+    padding: 8px;
+    box-shadow: 2px 0px 0px rgba(160, 156, 156, 0.475);
+}
+.list{
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    justify-content: space-between;
+    gap: 16px;
+}
+a{
+    cursor: pointer;
+}
+.list2{
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+    justify-content: center;
+    text-align: center;
+    font-weight: bolder;
+}
+.list-group-item{
+    border-bottom: 1px solid rgb(123, 119, 119) !important;
+    height: 2rem;
+}
+.tagsdiv{
+    display: flex;
+    gap: 8px;
+    color:rgba(40, 43, 45, 0.605);
+    align-items: center;
+}
+.rightside{
+    width: 65%;
+    height: 100vh;
+    padding: 8px;
+}
+.todaybar{
+    display: flex;
+    padding: 8px;
+    height: 2rem;
+    background-color: rgb(184, 236, 219);
+    border-radius: 5px;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 8px;
+}
+.todaybar .right{
+    display: flex;
+    gap: 1rem;
+    padding: 8px;
+}
+.form-hide{
+    display: none;
+}
+.form{
+    display: block;
+    width: 100%;
+    background-color: #eee;
+    border-radius: 5px;
+    padding: 8px;
+}
+.group-input{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+}
+.input{
+    width: 50%;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+.selects{
+    width: 15%;
+    cursor: pointer;
+}
+.addbtn{
+    width: 19%;
+    border: 1px solid green;
+    border-radius: 5px;
+}
+
+.Taskcontenear{
+    max-height: 15.35rem;
+    overflow-y: scroll;
+    scroll-behavior: smooth;
+}
+.alltask{
+    max-height: 95vh;
+}
+.Taskcontenear::-webkit-scrollbar {
+    display: none;
+}
+.Taskcontenear{
+    border-radius: 5px;
+    background-color: #eee;
+    box-shadow: 2px 2px 2px rgb(155, 151, 151);
+}
+.task-list-div{
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.task-item{
+    padding: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-radius: 5px;
+}
+.task-data{
+    display: flex;
+    gap: 1rem;
+}
+.edit-btn,
+.remove-btn,
+.add-btn{
+    color: black;
+    cursor: pointer;
+    transition: 0.5s;
+}
+
+.add-btn:hover{
+    color: blue;
+    transform: scale(1.2);
+    transition: 0.5s;
+}
+.add-btnicon{
+    width: 32px !important;
+    height: 32px !important;
+}
+.btn-cntnr{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+.bi,
+.bi-pencil-fill{
+    width: 20px;
+    height: 20px;
+}
+.edit-btn:hover .bi-pencil-fill{
+    width: 24px;
+    height: 24px;
+    background-color: green;
+    border-radius: 30%;
+    transform: scale(1.4);
+    transition: 0.5s;
+}
+.remove-btn:hover .bi{
+    border-radius: 30%;
+    background-color: red;
+    transform: scale(1.4);
+    transition: 0.5s;
+}
+
+.Notask{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.Donetask{
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.Donetaskhide{
+    display: none;
+}
+.newsPage{
+    width: 100%;
+}
+.dropdown{
+    display: flex;
+    justify-content: space-between;
+}
+.select{
+    color: rgba(62, 61, 61, 0.77);
+    background-color: rgb(184, 236, 219);
+}
+.news-cont{
+    margin-top: 6px;
+    
+}
+.newsitem{
+    
+}

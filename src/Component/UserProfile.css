@@ -1,0 +1,86 @@
+.body{
+    width: 82.3%;
+    height: 100vh;
+    padding: 6px;
+}
+.TopDiv{
+    width: initial;
+    display: flex;
+    justify-content: space-between;
+}
+.ProfileDiv {
+    padding: 2px;
+    align-items: center;
+    width: 27%;
+    height: 16rem !important;
+    background-color: rgb(184, 236, 219)!important;
+    box-shadow: 0 2px 2px 2px rgb(215, 213, 213);
+}
+.ProfilePic{
+    height: 4rem;
+    width: 4rem !important;
+    margin-top: 6px;
+    border-radius: 50% !important;
+    box-shadow: 0 0 2px 2px rgb(105, 103, 103);
+}
+.card-body {
+    text-align: center;
+}
+.PerformanceDiv{
+    width: 72.5%;
+}
+.PerformanceContanear{
+    padding: 6px;
+}
+.Heading {
+    font-weight: bold;
+    padding-left:8px;
+    margin-bottom: 8px;
+}
+.ProgressItem{
+    display: flex;
+    justify-content: space-between ;
+    align-items: center;
+    height: 2.4rem;
+    background-color: rgb(184, 236, 219)!important;
+}
+.Content{
+    font-size: 1rem;
+    margin-bottom: 0;
+}
+.Progress{
+    width: 45%;
+}
+.BottonDiv {
+    box-shadow: 0 3px 3px 3px rgb(215, 213, 213);
+    margin-top: 8px;
+    padding: 8px;
+}
+.HeadingTag{
+    font-weight: bold;
+    padding-left:8px;
+    margin-bottom: 4px;
+}
+.ContentTag{
+    display: flex;
+    align-items: center;
+    font-size: 1rem;
+    margin-bottom: 0;
+}
+.TagsProgressItem{
+    display: flex;
+    justify-content: space-between ;
+    align-items: center;
+    padding: 6px;
+    height: 2rem;
+    margin-bottom: 12px !important;
+    background-color: rgb(184, 236, 219)!important;
+}
+.btncont{
+    display: flex;
+    justify-content: space-between;
+}
+.btn{
+    font-size: 20px !important;
+
+}

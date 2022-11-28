@@ -1,0 +1,56 @@
+.loginpage{
+    width: 82.3%;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+}
+.backgroundimg{
+    width: 100%;
+    height: 100vh;
+    position: absolute;
+}
+.loginForm{
+    padding: 16px;
+    width: 40%;
+    height: auto;
+    background-color: rgb(184, 236, 219) !important;
+}
+.loginHeading{
+    font-weight: bolder !important;
+    text-align: center;
+    margin-bottom: 16px !important;
+    border-bottom: 1px solid rgb(110, 107, 107);
+}
+.btnitem{
+    text-align:center;
+}
+.loginbtn{
+    width: 40% !important;
+}
+.forgot{
+    margin-bottom: 0;
+    cursor: pointer;
+    transition: .5s;
+    margin-top: 6px;
+    color: blue;
+}
+.or{
+    margin-bottom: 0;
+    font-weight: bolder;
+}
+.forgot:hover{
+    color: black;
+    transition: 1s;
+}
+.singForm{
+    padding: 16px;
+    width: 50%;
+    height: auto;
+    background-color: rgb(184, 236, 219) !important;
+}
+.btn_item{
+    margin-top: 16px;
+    text-align:center;
+}
