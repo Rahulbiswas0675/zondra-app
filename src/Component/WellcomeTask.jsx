@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import '../Pages/Home.css';
-import edtimg from '../Img/Edit.svg';
-import dltimg from '../Img/trash-.svg';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 function WellcomeTask(props) {
     const [dues, setDues] = useState();
     useEffect(() => {
@@ -18,12 +18,8 @@ function WellcomeTask(props) {
                                 {items.Task}
                             </div>
                             <div className="btn-cntnr">
-                                <div className="edit-btn">
-                                    <img src={edtimg} className="bi bi-pencil-fill" />
-                                </div>
-                                <div className="remove-btn">
-                                    <img src={dltimg} className="bi bi-trash-fill" />
-                                </div>
+                                <EditIcon className="bi bi-pencil-fill" />
+                                <DeleteIcon className="bi bi-trash-fill" />
                             </div>
                         </div>
                     ))

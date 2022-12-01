@@ -1,10 +1,16 @@
-import React from 'react'
+import React, { useState } from 'react';
+import EventForm from '../MainPage/EventForm';
+import EventData from '../MainPage/EventData';
 
 function Events() {
+  const[evtval,setEntval]=useState();
+  const event_handel=(value)=>{
+    setEntval(value);
+  }
   return (
-    <div>
-      <h1>Events</h1>
-      <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa enim quibusdam sint rem ab id consectetur molestias corporis. Nesciunt odio odit unde earum ducimus dolorum quo error officiis incidunt itaque?</p>
+    <div style={{ width: '82.2%', height:'100vh', padding:'8px', display:'flex', flexDirection:'column', gap:'8px'}}>
+      <EventForm eventdatas={event_handel}/>
+      <EventData eventsdatas={evtval}/>
     </div>
   )
 }

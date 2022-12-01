@@ -144,23 +144,23 @@ a{
     justify-content: center;
     gap: 1rem;
 }
-.bi,
-.bi-pencil-fill{
+.bi{
     width: 20px;
     height: 20px;
+    color: black;
+    transition: 0.5s;
+    cursor: pointer;
 }
-.edit-btn:hover .bi-pencil-fill{
-    width: 24px;
-    height: 24px;
+.bi-pencil-fill:hover{
     background-color: green;
     border-radius: 30%;
-    transform: scale(1.4);
+    transform: scale(1.1);
     transition: 0.5s;
 }
-.remove-btn:hover .bi{
+.bi-trash-fill:hover{
     border-radius: 30%;
     background-color: red;
-    transform: scale(1.4);
+    transform: scale(1.1);
     transition: 0.5s;
 }
 
@@ -192,8 +192,5 @@ a{
 }
 .news-cont{
     margin-top: 6px;
-    
-}
-.newsitem{
     
 }

@@ -54,3 +54,6 @@
     margin-top: 16px;
     text-align:center;
 }
+.NoteItem::-webkit-scrollbar {
+    display: none;
+}

@@ -106,7 +106,7 @@ function Add_Task(props) {
             } else {
                 datevalue = new Date(taskdate).toLocaleString().split(',')[0];
             }
-            if (localStorage.getItem('Your Task')) {
+            if (localStorage.getItem('Your Task')){
                 let Task = JSON.parse(localStorage.getItem('Your Task'));
                 let Taskdata = {
                     Id: +(Task[Task.length - 1].Id) + 1,

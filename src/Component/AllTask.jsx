@@ -1,41 +1,37 @@
 import React from 'react';
 import '../Pages/Home.css';
-import edtimg from '../Img/Edit.svg';
-import dltimg from '../Img/trash-.svg';
+import DeleteIcon from '@mui/icons-material/Delete';
+import EditIcon from '@mui/icons-material/Edit';
 import { useState, useEffect } from 'react';
 function AllTask(props) {
     const [alltask, setAlltask] = useState();
     useEffect(() => {
-            if (localStorage.getItem('Your Task')) {
-                let localstoreg = JSON.parse(localStorage.getItem('Your Task'));
-                let duesdata = localstoreg.filter(today => (today.Status.includes('Dues')));
-                setAlltask(
-                    duesdata.map(items => (
-                        <div className="task-item list-group-item-danger" key={items.Id}>
-                            <div className="task-data">
-                                <input type="checkbox" className="form-check-input"/>
-                                {items.Task}
-                            </div>
-                            <div className="btn-cntnr">
-                                <div className="edit-btn">
-                                    <img src={edtimg} className="bi bi-pencil-fill" />
-                                </div>
-                                <div className="remove-btn">
-                                    <img src={dltimg} className="bi bi-trash-fill" />
-                                </div>
-                            </div>
+        if (localStorage.getItem('Your Task')) {
+            let localstoreg = JSON.parse(localStorage.getItem('Your Task'));
+            let duesdata = localstoreg.filter(today => (today.Status.includes('Dues')));
+            setAlltask(
+                duesdata.map(items => (
+                    <div className="task-item list-group-item-danger" key={items.Id}>
+                        <div className="task-data">
+                            <input type="checkbox" className="form-check-input" />
+                            {items.Task}
                         </div>
-                    ))
-                );
-            } else {
-                setAlltask(
-                    <div className="Notask" id="Notask">
-                        <p>You Have No Task</p>
-                        <p>Add Task</p>
+                        <div className="btn-cntnr">
+                            <EditIcon className="bi bi-pencil-fill" />
+                            <DeleteIcon className="bi bi-trash-fill" />
+                        </div>
                     </div>
-                );
-            }
-    },[props.taskupdate])
+                ))
+            );
+        } else {
+            setAlltask(
+                <div className="Notask" id="Notask">
+                    <p>You Have No Task</p>
+                    <p>Add Task</p>
+                </div>
+            );
+        }
+    }, [props.taskupdate])
     return (
         <>
             <div className="ms-2 me-auto tagsdiv">

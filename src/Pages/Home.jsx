@@ -45,8 +45,11 @@ function Home() {
     if(localStorage.getItem('Your Task') != null){
       let localstoreg = JSON.parse(localStorage.getItem('Your Task'))
       let todaydata = localstoreg.filter(today => (today.Date.includes(currentdate)));
+      let tddatalnt = todaydata.filter(today => (today.Status.includes('Dues')));
       let duesdata = localstoreg.filter(today => (today.Status.includes('Dues')));
+
       let next = localstoreg.filter(data=> data.Date >= currentdate);
+      
       let wellcomedata = duesdata.filter(today => { return today.Tag == "Welcome" });
       let workdata = duesdata.filter(today => { return today.Tag == "Work" });
       let personaldata = duesdata.filter(today =>{return today.Tag == "Personal"});
@@ -56,7 +59,7 @@ function Home() {
       let birthdaydata = duesdata.filter(today => { return today.Tag == "Birthday" });
       let wishlistdata = duesdata.filter(today => { return today.Tag == "Wish List" });
 
-      setTodaynotify(todaydata.length);
+      setTodaynotify(tddatalnt.length);
       setAllnotify(duesdata.length);
       setNextnotify(next.length);
       setWelcomnotify(wellcomedata.length);
