@@ -18,6 +18,7 @@ import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import InfoIcon from '@mui/icons-material/Info';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import { useState } from 'react';
+
 function App() {
     const[notiClass,setNotiClass]=useState(true);
     // ======================HTML=====================================
