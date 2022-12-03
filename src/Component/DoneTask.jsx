@@ -39,7 +39,6 @@ function DoneTask(props) {
     const [date, setDate] = useState(new Date());
     const [currentdate, setCurrentdate] = useState(date.toLocaleDateString());
     const [done, setDone] = useState();
-
     const delet_handle = (id) => {
         const local = JSON.parse(localStorage.getItem('Your Task'));
         for (let i = 0; i < local.length; i++) {
@@ -62,7 +61,6 @@ function DoneTask(props) {
         createNotification('warning');
         props.taskupdate(JSON.parse(localStorage.getItem('Your Task')).filter(today => (today.Status.includes('Dues'))).length);
     }
-
     useEffect(() => {
         if (localStorage.getItem('Your Task')) {
             let localstoreg = JSON.parse(localStorage.getItem('Your Task'))

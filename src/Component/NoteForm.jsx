@@ -32,6 +32,9 @@ function NoteForm(props) {
     const [title, setTitle] = useState();
     const [subject, setSubject] = useState();
     
+    const [date, setDate] = useState(new Date());
+  const [currentdate, setCurrentdate] = useState(date.toLocaleDateString());
+
     const title_handel = (e) => {
         setTitle(e.target.value);
     }
@@ -48,6 +51,7 @@ function NoteForm(props) {
                     Id: +(Note[Note.length - 1].Id) + 1,
                     Title: title,
                     Subject: subject,
+                    Date:currentdate,
                     Status : "Complete",
                 }
                 Note.push(Notedata);
@@ -57,6 +61,7 @@ function NoteForm(props) {
                     Id: 1,
                     Title: title,
                     Subject: subject,
+                    Date:currentdate,
                     Status : "Complete",
                 }
                 localStorage.setItem("Your Note", JSON.stringify([Notedata]));

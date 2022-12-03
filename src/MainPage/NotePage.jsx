@@ -9,7 +9,7 @@ function NotePage() {
   return (
     <div style={{ width: '82.2%', height:'100vh', padding:'8px', display:'flex', gap:'16px'}}>
         <NoteForm fromdatas={fromdata}/>
-        <NoteData fromdatas={data}/>
+        <NoteData taskupdate={fromdata} fromdatas={data}  />
     </div>
   )
 }

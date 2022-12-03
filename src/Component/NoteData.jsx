@@ -23,7 +23,7 @@ const createNotification = (type) => {
                 NotificationManager.info('Info message', 'Info Not Match', 2000);
                 break;
             case 'success':
-                NotificationManager.success('Success message', 'Task Is Dues', 2000);
+                NotificationManager.success('Success message', 'Copy Successful', 2000);
                 success.autoplay = true;
                 break;
             case 'warning':
@@ -38,26 +38,38 @@ const createNotification = (type) => {
     
     };
 function NoteData(props) {
-    
+    const [date, setDate] = useState(new Date());
+    const [currentdate, setCurrentdate] = useState(date.toLocaleDateString());
     const [local, setLocal] = useState();
     const delet_handle = (id) => {
         const local = JSON.parse(localStorage.getItem('Your Note'));
         for (let i = 0; i < local.length; i++) {
             if (local[i].Id == id) {
                 local[i].Status = "Delete";
+                local[i].Date = currentdate;
             }
         }
         localStorage.setItem("Your Note", JSON.stringify(local));
         createNotification('error');
         props.taskupdate(JSON.parse(localStorage.getItem('Your Note')).filter(today => (today.Status.includes('Delete'))).length);
     }
+    const copy_handle=(id)=>{
+        const local = JSON.parse(localStorage.getItem('Your Note'));
+        for (let i = 0; i < local.length; i++) {
+            if (local[i].Id == id) {
+                navigator.clipboard.writeText(local[i].Subject);
+            }
+        }
+        createNotification('success');
+    }
     useEffect(() => {
         if (localStorage.getItem("Your Note")) {
             setLocal(JSON.parse(localStorage.getItem("Your Note")).filter(today => (today.Status.includes('Complete'))));
-        } else {
+        }else{
             setLocal(false);
         }
     }, [props.fromdatas]);
+    console.log(local)
     return (
         <div style={{ width: '50%' }}>
             <Card style={{ width: '100%', backgroundColor: '#eee', height: '97.8vh', }}>
@@ -69,7 +81,7 @@ function NoteData(props) {
                                 <Card.Title style={{marginBottom:'0px'}}>{item.Title}</Card.Title>
                                 <Card.Text className="NoteItem" style={{height: '34vh', overflow:'scroll',}}>{item.Subject}</Card.Text>
                                 <div style={{position: 'absolute',display:'flex',justifyContent:'space-between', bottom: '5px', width:'95%',}}>
-                                    <ContentCopyIcon className="bi bi-pencil-fill" />
+                                    <ContentCopyIcon className="bi bi-pencil-fill" onClick={() => copy_handle(item.Id)}/>
                                     <DeleteIcon className="bi bi-trash-fill" onClick={() => delet_handle(item.Id)} />
                                 </div>
                             </Card>

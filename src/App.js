@@ -6,7 +6,6 @@ import Events from './Pages/Events';
 import Notes from './Pages/Notes';
 import Profile from './Pages/Profile';
 import Notify from './Pages/Notify';
-import News from './Pages/News';
 import About from './Pages/About';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import Logo from './Img/zondra.png';
@@ -18,9 +17,13 @@ import CheckBoxIcon from '@mui/icons-material/CheckBox';
 import InfoIcon from '@mui/icons-material/Info';
 import NotificationsIcon from '@mui/icons-material/Notifications';
 import { useState } from 'react';
-
+import Bot from './Pages/Bot';
 function App() {
-    const[notiClass,setNotiClass]=useState(true);
+    const [notiClass, setNotiClass] = useState(true);
+    const[notival,seNotival]=useState();
+    const updateval=(value)=>{
+        seNotival(value);
+    }
     // ======================HTML=====================================
     return (
         <div className="0">
@@ -48,7 +51,7 @@ function App() {
                                     <a className="nav-link active" aria-current="page"><Link to="/profile"><AccountCircleIcon /></Link></a>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link active" aria-current="page" onClick={()=> setNotiClass(!notiClass)}><Link to=""><NotificationsIcon /></Link></a>
+                                    <a className="nav-link active" aria-current="page" onClick={() => setNotiClass(!notiClass)}><Link to=""><NotificationsIcon /></Link></a>
                                 </li>
                                 <li className="nav-item">
                                     <a className="nav-link"><Link to="/about"><InfoIcon /></Link></a>
@@ -69,7 +72,7 @@ function App() {
                 </div>
             </Router>
             <div className="notify">
-                {notiClass ? <News /> : <Notify />}
+                {notiClass ? <Bot /> : <Notify taskupdate={updateval} taskupdates={notival}/>}
             </div>
         </div>
     );

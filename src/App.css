@@ -63,3 +63,6 @@ body {
     top: 0;
     right: 0;
 }
+.newsPage::-webkit-scrollbar{
+    display: none;
+}

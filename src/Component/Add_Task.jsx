@@ -122,7 +122,7 @@ function Add_Task(props) {
 
             <div className="form-hide" id="taskbar">
                 <div className="input-group group-input">
-                    <input type="text" className="input" placeholder="Enter Your Task" onChange={taskinput}/>
+                    <input type="text" className="input" placeholder="Enter Your Task" onChange={taskinput} value={taskvalue}/>
                     <input type="date" id="datefild" className="selects" onChange={dateinput} />
                     <select className="selects" id="selecttag" onChange={taginput}>
                         <option value="Rendom">Select Tag</option>

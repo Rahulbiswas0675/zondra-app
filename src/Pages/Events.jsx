@@ -10,7 +10,7 @@ function Events() {
   return (
     <div style={{ width: '82.2%', height:'100vh', padding:'8px', display:'flex', flexDirection:'column', gap:'8px'}}>
       <EventForm eventdatas={event_handel}/>
-      <EventData eventsdatas={evtval}/>
+      <EventData taskupdate={event_handel} eventsdatas={evtval}/>
     </div>
   )
 }
