@@ -48,7 +48,14 @@ function Home() {
       let tddatalnt = todaydata.filter(today => (today.Status.includes('Dues')));
       let duesdata = localstoreg.filter(today => (today.Status.includes('Dues')));
 
-      let next = localstoreg.filter(data=> data.Date >= currentdate);
+      // let next = localstoreg.filter(data=> data.Date >= currentdate);
+      let newdate = new Date();
+      let dates = newdate.getDate()+7;
+      let months = newdate.getMonth()+1;
+      let years = newdate.getFullYear();
+      let findate = `${months}/${dates}/${years}`;
+      let next = localstoreg.filter(today => {return today.Date > currentdate || today.Date <= findate});
+      let nextdate = next.filter(today => (today.Status.includes('Dues')));
       
       let wellcomedata = duesdata.filter(today => { return today.Tag == "Welcome" });
       let workdata = duesdata.filter(today => { return today.Tag == "Work" });
@@ -61,7 +68,7 @@ function Home() {
 
       setTodaynotify(tddatalnt.length);
       setAllnotify(duesdata.length);
-      setNextnotify(next.length);
+      setNextnotify(nextdate.length);
       setWelcomnotify(wellcomedata.length);
       setWorknotify(workdata.length);
       setPerssonenotify(personaldata.length);
@@ -195,18 +202,18 @@ function Home() {
 
         <div className="rightside">
           {(div == "Todaypage" )? <Todaypage taskupdate={taskupdate_handeler}/> :
-          (div == "Allpage") ? <Allpage taskupdates={taskupdate}/> :
-          (div == "Nextweek") ? <Nextweek taskupdates={taskupdate}/> :
-          (div == "WellcomePage") ? <WellcomePage taskupdates={taskupdate}/> :
-          (div == "WorkPage") ? <WorkPage taskupdates={taskupdate}/> :
-          (div == "PersonalPage") ? <PersonalPage taskupdates={taskupdate}/> :
-          (div == "ShoppingPage") ? <ShoppingPage taskupdates={taskupdate}/> :
-          (div == "LearningPage") ? <LearningPage taskupdates={taskupdate}/> :
-          (div == "FitnessPage") ? <FitnessPage taskupdates={taskupdate}/> :
-          (div == "BirthdaywishPage") ? <BirthdaywishPage taskupdates={taskupdate}/> :
-          (div == "WishlistPage") ? <WishlistPage taskupdates={taskupdate}/> :
-          (div == "CompletePage") ? <CompletePage /> :
-          (div == "TrashPage") ? <TrashPage /> :
+          (div == "Allpage") ? <Allpage taskupdates={taskupdate} taskupdate={taskupdate_handeler}/> :
+          (div == "Nextweek") ? <Nextweek taskupdates={taskupdate} taskupdate={taskupdate_handeler}/> :
+          (div == "WellcomePage") ? <WellcomePage taskupdates={taskupdate} taskupdate={taskupdate_handeler}/> :
+          (div == "WorkPage") ? <WorkPage taskupdates={taskupdate} taskupdate={taskupdate_handeler}/> :
+          (div == "PersonalPage") ? <PersonalPage taskupdates={taskupdate} taskupdate={taskupdate_handeler}/> :
+          (div == "ShoppingPage") ? <ShoppingPage taskupdates={taskupdate} taskupdate={taskupdate_handeler}/> :
+          (div == "LearningPage") ? <LearningPage taskupdates={taskupdate} taskupdate={taskupdate_handeler}/> :
+          (div == "FitnessPage") ? <FitnessPage taskupdates={taskupdate} taskupdate={taskupdate_handeler}/> :
+          (div == "BirthdaywishPage") ? <BirthdaywishPage taskupdates={taskupdate} taskupdate={taskupdate_handeler}/> :
+          (div == "WishlistPage") ? <WishlistPage taskupdates={taskupdate} taskupdate={taskupdate_handeler}/> :
+          (div == "CompletePage") ? <CompletePage taskupdates={taskupdate} taskupdate={taskupdate_handeler}/> :
+          (div == "TrashPage") ? <TrashPage taskupdates={taskupdate} taskupdate={taskupdate_handeler}/> :
           (div == "SummaryPage") ? <SummaryPage /> :
           <Todaypage taskupdate={taskupdate_handeler}/>}
         </div>

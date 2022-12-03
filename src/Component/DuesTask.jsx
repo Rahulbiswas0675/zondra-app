@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import '../Pages/Home.css';
 import { NotificationContainer, NotificationManager } from 'react-notifications';
 import DeleteIcon from '@mui/icons-material/Delete';
-import EditIcon from '@mui/icons-material/Edit';
 import Successmp3 from '../Sound/notification.mp3';
 import deletemp3 from '../Sound/dlt.mp3';
 
@@ -18,48 +17,20 @@ const createNotification = (type) => {
     switch (type) {
         case 'info':
             NotificationManager.info('Info message', 'Info Not Match', 2000);
-            titelval = "Info Not Match";
-            descriptionvalue = "The description of a information not match.";
             break;
         case 'success':
             NotificationManager.success('Success message', 'Task Is Complete', 2000);
-            titelval = "Task Is Complete";
             success.autoplay = true;
             break;
         case 'warning':
             NotificationManager.warning('Warning message', 'Enter Your Task', 2000);
-            titelval = "Enter Your Task";
-            descriptionvalue = "The description of a warning for input fild is empty.";
             // wornging.autoplay = true;
             break;
         case 'error':
             NotificationManager.error('Delete message', 'Task Is deleted', 2000,);
-            titelval = "Task Is Deleted";
-            descriptionvalue = "The description of a deleted task.";
             deleted.autoplay = true;
             break;
     };
-    // ================INBOX==========
-    if (type === 'error') {
-        if (localStorage.getItem('Inbox')) {
-            let Task = JSON.parse(localStorage.getItem('Inbox'));
-            let Taskdata = {
-                Id: +(Task[Task.length - 1].Id) + 1,
-                Titel: titelval,
-                description: descriptionvalue,
-            }
-            Task.push(Taskdata);
-            localStorage.setItem("Inbox", JSON.stringify(Task))
-        } else {
-            let Taskdata = {
-                Id: 1,
-                Titel: titelval,
-                description: descriptionvalue,
-            }
-            localStorage.setItem("Inbox", JSON.stringify([Taskdata]));
-        }
-    }
-
 };
 function DuesTask(props) {
     const [date, setDate] = useState(new Date());
@@ -67,27 +38,27 @@ function DuesTask(props) {
     const [dues, setDues] = useState();
 
 
-    const delet_handle=(id)=>{
+    const delet_handle = (id) => {
         const local = JSON.parse(localStorage.getItem('Your Task'));
-        for(let i = 0; i < local.length; i++){
-            if(local[i].Id == id){
+        for (let i = 0; i < local.length; i++) {
+            if (local[i].Id == id) {
                 local[i].Status = "Delete";
             }
         }
-        localStorage.setItem("Your Task",JSON.stringify(local));
-        props.taskupdate(JSON.parse(localStorage.getItem('Your Task')).filter(today => (today.Status.includes('Dues'))).length);
+        localStorage.setItem("Your Task", JSON.stringify(local));
         createNotification('error');
+        props.taskupdate(JSON.parse(localStorage.getItem('Your Task')).filter(today => (today.Status.includes('Dues'))).length);
     }
-    const edit_handle=(id)=>{
+    const done_handle = (id) => {
         const local = JSON.parse(localStorage.getItem('Your Task'));
-        for(let i = 0; i < local.length; i++){
-            if(local[i].Id == id){
+        for (let i = 0; i < local.length; i++) {
+            if (local[i].Id == id) {
                 local[i].Status = "Done";
             }
         }
-        localStorage.setItem("Your Task",JSON.stringify(local));
-        props.taskupdate(JSON.parse(localStorage.getItem('Your Task')).filter(today => (today.Status.includes('Dues'))).length);
+        localStorage.setItem("Your Task", JSON.stringify(local));
         createNotification('success');
+        props.taskupdate(JSON.parse(localStorage.getItem('Your Task')).filter(today => (today.Status.includes('Dues'))).length);
     }
 
     useEffect(() => {
@@ -97,14 +68,14 @@ function DuesTask(props) {
             let duesdata = todaydata.filter(today => (today.Status.includes('Dues')));
             setDues(
                 duesdata.map(items => (
+
                     <div className="task-item list-group-item-danger" key={items.Id}>
                         <div className="task-data">
-                            <input type="checkbox" className="form-check-input" onClick={()=> edit_handle(items.Id)}/>
+                            <input type="checkbox" className="form-check-input" onClick={() => done_handle(items.Id)} />
                             {items.Task}
                         </div>
                         <div className="btn-cntnr">
-                            <EditIcon className="bi bi-pencil-fill" />
-                            <DeleteIcon className="bi bi-trash-fill" onClick={()=> delet_handle(items.Id)}/>
+                            <DeleteIcon className="bi bi-trash-fill" onClick={() => delet_handle(items.Id)} />
                         </div>
                     </div>
                 ))
@@ -118,6 +89,7 @@ function DuesTask(props) {
             );
         }
     }, [props.taskupdates]);
+
     return (
         <>
             <div className="ms-2 me-auto tagsdiv">

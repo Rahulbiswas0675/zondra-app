@@ -14,7 +14,7 @@ function Today(props) {
     <div className="today-contanear" id="Today">
       <Add_Task  taskupdate={taskupdate_handeler}/>
       <DuesTask taskupdates={taskupdate} taskupdate={taskupdate_handeler}/>
-      <DoneTask taskupdates={taskupdate}/>
+      <DoneTask taskupdates={taskupdate} taskupdate={taskupdate_handeler}/>
     </div>
   )
 }

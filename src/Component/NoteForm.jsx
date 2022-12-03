@@ -11,52 +11,22 @@ const createNotification = (type) => {
     const wornging = document.createElement("audio");
     wornging.src = Worngmp3;
 
-    let titelval;
-    let descriptionvalue;
     switch (type) {
         case 'info':
             NotificationManager.info('Info message', 'Info Not Match', 2000);
-            titelval = "Info Not Match";
-            descriptionvalue = "The description of a information not match.";
             break;
         case 'success':
             NotificationManager.success('Success message', 'New Note Added', 2000);
-            titelval = "New Note Added";
             success.autoplay = true;
             break;
         case 'warning':
             NotificationManager.warning('Warning message', 'Enter Your Note', 2000);
-            titelval = "Enter Your Note";
-            descriptionvalue = "The description of a warning for input fild is empty.";
             wornging.autoplay = true;
             break;
         case 'error':
             NotificationManager.error('Error message', 'Task Is delete', 2000,);
-            titelval = "Task Is Delete";
-            descriptionvalue = "The description of a deleted task.";
             break;
     };
-    // ================INBOX==========
-    if (type === 'success') {
-        if (localStorage.getItem('Inbox')) {
-            let Task = JSON.parse(localStorage.getItem('Inbox'));
-            let Taskdata = {
-                Id: +(Task[Task.length - 1].Id) + 1,
-                Titel: titelval,
-                description: descriptionvalue,
-            }
-            Task.push(Taskdata);
-            localStorage.setItem("Inbox", JSON.stringify(Task))
-        } else {
-            let Taskdata = {
-                Id: 1,
-                Titel: titelval,
-                description: descriptionvalue,
-            }
-            localStorage.setItem("Inbox", JSON.stringify([Taskdata]));
-        }
-    }
-
 };
 function NoteForm(props) {
     const [title, setTitle] = useState();
@@ -77,7 +47,8 @@ function NoteForm(props) {
                 let Notedata = {
                     Id: +(Note[Note.length - 1].Id) + 1,
                     Title: title,
-                    Subject: subject
+                    Subject: subject,
+                    Status : "Complete",
                 }
                 Note.push(Notedata);
                 localStorage.setItem("Your Note", JSON.stringify(Note));
@@ -85,7 +56,8 @@ function NoteForm(props) {
                 let Notedata = {
                     Id: 1,
                     Title: title,
-                    Subject: subject
+                    Subject: subject,
+                    Status : "Complete",
                 }
                 localStorage.setItem("Your Note", JSON.stringify([Notedata]));
             }
